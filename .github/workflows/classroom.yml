@@ -1,0 +1,21 @@
+
+    name: GitHub Classroom Workflow
+
+    on: [push]
+
+    jobs:
+      build:
+        name: Autograding
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v2
+          - name: Setup Python
+            uses: actions/setup-python@v2
+            with:
+                python-version: 3.5
+          - name: Print V
+            run: python3 --version
+          - uses: Dovyski/setup-opencv-action@v1
+            with:
+                opencv-version: '4.0.0'
+          - uses: education/autograding@v1
